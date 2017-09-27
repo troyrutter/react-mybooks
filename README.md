@@ -18,7 +18,7 @@ containing books and allow you to place them on three separate shelves.
 │   └── index.html # DO NOT MODIFY
 ├── src
 │   ├── API
-│   │   └── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+│   │   └── BooksAPI.js # A JavaScript API for the provided Udacity backend.
 │   ├── components
 │   │   ├── DisplayBook.js # This file controls the displaying of any book in the app
 │   │   ├── ListBooks.js # Show books on a specific shelf

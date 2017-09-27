@@ -21,7 +21,7 @@ class Search extends Component {
             query: query
         })
         if (query){
-            BooksAPI.search(query.trim(), 50).then((results) => {
+            BooksAPI.search(query.trim()).then((results) => {
                 if(!results || results.error){
                     this.setState({results: []})
                 } else {

@@ -17,12 +17,12 @@ class DisplayBook extends Component {
 
   render () {
     const { book, onChangeShelf } = this.props;
-    // set up a default image for the cover just in case
+    // set up a default image for the cover just in case. Uploaded jpg to a public store
     let url = 'https://i.imgur.com/b3dwvna.jpg';
     if (book.imageLinks) {
-        url = book.imageLinks.thumbnail;
+    // reset http with https to stop ionsecure browsing warnings
+        url = book.imageLinks.thumbnail.replace('http://', 'https://'); 
     }
-
 
     return (
 
@@ -50,4 +50,4 @@ class DisplayBook extends Component {
   }
 }
 
-export default DisplayBook
+export default DisplayBook;
