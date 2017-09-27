@@ -17,12 +17,11 @@ class DisplayBook extends Component {
 
   render () {
     const { book, onChangeShelf } = this.props;
-
+    // set up a default image for the cover just in case
     let url = 'https://i.imgur.com/b3dwvna.jpg';
     if (book.imageLinks) {
         url = book.imageLinks.thumbnail;
     }
-
 
 
     return (
@@ -30,20 +29,14 @@ class DisplayBook extends Component {
       <li> 
         <div className="book">
           <div className="book-top">
-
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(
-              ${url}
-             )`}}></div>
-              }
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url( ${url} )`}}></div> }
             <div className="book-shelf-changer">
               <select id={book.id} value={book.shelf ? book.shelf : 'none'} onChange={onChangeShelf}>
-              {/* console.log({book}) */}
-                <option value="none" disabled>Move to...</option>
+                <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
-                <option value="none">None</option>
-             }
+                <option value="none">None</option>  }
               </select>
             </div>
           </div>
