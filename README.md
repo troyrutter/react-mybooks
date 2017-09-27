@@ -10,7 +10,6 @@ containing books and allow you to place them on three separate shelves.
 
 ## What You're Getting
 ```bash
-├── CONTRIBUTING.md
 ├── README.md - This file.
 ├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for the app.
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
