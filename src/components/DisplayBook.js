@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+// This is the master DisplayBook component. It shows the books in both the default and search (query) states.
+
 class DisplayBook extends Component {
   static propTypes = {
     book: PropTypes.shape({
     id: PropTypes.string,
-    imageLinks: PropTypes.object.isRequired,
+    imageLinks: PropTypes.object,
     title: PropTypes.string.isRequired,
     authors: PropTypes.array,
     shelf: PropTypes.string
@@ -16,19 +18,30 @@ class DisplayBook extends Component {
   render () {
     const { book, onChangeShelf } = this.props;
 
+    let url = 'https://i.imgur.com/b3dwvna.jpg';
+    if (book.imageLinks) {
+        url = book.imageLinks.thumbnail;
+    }
+
+
+
     return (
-      <li>
+
+      <li> 
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(
+              ${url}
+             )`}}></div>
+              }
             <div className="book-shelf-changer">
               <select id={book.id} value={book.shelf ? book.shelf : 'none'} onChange={onChangeShelf}>
-              {console.log({book})}
+              {/* console.log({book}) */}
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
-             
                 <option value="none">None</option>
              }
               </select>

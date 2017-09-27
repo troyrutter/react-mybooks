@@ -4,6 +4,8 @@ import * as BooksAPI from '../API/BooksAPI'
 import PropTypes from 'prop-types'
 import DisplayBook from './DisplayBook'
 
+// This component sets of the search state and calls the appropriate API and calls ther DisplayBook component for every response
+
 class Search extends Component {
         static propTypes = {
         changeShelf : PropTypes.func
@@ -13,6 +15,7 @@ class Search extends Component {
         query: '',
         results: []
     }
+    
     updateQuery = (query) => {
         this.setState({
             query: query
@@ -53,11 +56,7 @@ class Search extends Component {
         </div>
         )
     }
+    
 }
-
-
-
-
-
 
 export default Search

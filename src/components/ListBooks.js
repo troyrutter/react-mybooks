@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Book from './DisplayBook'
 
+// This component renders the main bookshelf for the default state and maps through the books to display them on the correct shelf
+
 ListBooks.propTypes = {
   title: PropTypes.string.isRequired,
   books: PropTypes.array
