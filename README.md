@@ -19,7 +19,7 @@ containing books and allow you to place them on three separate shelves.
 │   └── index.html # DO NOT MODIFY
 ├── src
 │   ├── API
-│   │   └── Search.js # Seach API
+│   │   └── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
 │   ├── components
 │   │   ├── DisplayBook.js # This file controls the displaying of any book in the app
 │   │   ├── ListBooks.js # Show books on a specific shelf
@@ -32,6 +32,6 @@ containing books and allow you to place them on three separate shelves.
 │   ├── index.js # Used for DOM rendering only.
 │   ├── App.css # Styles for the app. Feel free to customize this as you desire.
 │   ├── App.js # App main , also contains the different shelves for the books
-│   ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+
 ```
 
