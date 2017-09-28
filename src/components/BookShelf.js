@@ -1,22 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Book from './DisplayBook'
+import DisplayBook from './DisplayBook'
 
-// This component renders the main bookshelf for the default state and maps through the books to display them on the correct shelf
+// This component renders the main bookshelf for the default state and maps through the shelves
 
-ListBooks.propTypes = {
+bookShelf.propTypes = {
   title: PropTypes.string.isRequired,
-  books: PropTypes.array
+  books: PropTypes.array,
 }
 
-function ListBooks({title, books, onChangeShelf}) {
+
+function bookShelf({title, books, onChangeShelf}) {
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
           {books.map((book) => (
-            <Book key={book.id} book={book} onChangeShelf={onChangeShelf} />
+            <DisplayBook key={book.id} book={book} shelf={book.shelf} onChangeShelf={onChangeShelf} />
           ))}
         </ol>
       </div>
@@ -24,4 +25,4 @@ function ListBooks({title, books, onChangeShelf}) {
   )
 }
 
-export default ListBooks
+export default bookShelf

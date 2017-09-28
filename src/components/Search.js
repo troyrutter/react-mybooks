@@ -16,6 +16,7 @@ class Search extends Component {
         results: []
     }
     
+
     updateQuery = (query) => {
         this.setState({
             query: query
@@ -25,14 +26,24 @@ class Search extends Component {
                 if(!results || results.error){
                     this.setState({results: []})
                 } else {
+                  results.map(book => (this.props.currentBooks.filter((b) => 
+                        b.id === book.id).map(b => book.shelf = b.shelf)))
                     this.setState({results:results})   
                 }
-            }              
+            }   
          )}      
+        else {
+             this.setState({results: []})
+            }  
     }
+
 
    render(){
         const { results } = this.state;
+        //console.log(this.props.currentBooks) //echo our current books props to make sure we are getting data
+        //console.log(results)
+        //console.log(booksList.length)
+        
         return (
         <div className="search-books">
             <div className="search-books-bar">
@@ -48,7 +59,8 @@ class Search extends Component {
                  <ol className="books-grid">
             {
                 results.map((book) => (
-              <DisplayBook key={book.id} book={book} onChangeShelf={this.props.onShelfSelect}/>
+               
+              <DisplayBook key={book.id} book={book} shelf={book.shelf} onChangeShelf={this.props.onShelfSelect}/>
             ))}
               
           </ol>
