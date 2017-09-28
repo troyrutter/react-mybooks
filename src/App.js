@@ -1,31 +1,32 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import * as BooksAPI from './API/BooksAPI'
-import Bookshelf from './components/ListBooks'
+import Bookshelf from './components/BookShelf'
 import Search from './components/Search'
 import './App.css'
 
 class MyReadsApp extends React.Component {
   state = {
-    ListBooks: []
+    listBooks: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ListBooks: books})
+      this.setState({listBooks: books})
     });
   }
+
 
   changeShelf = (event) => {
     BooksAPI.update({id: event.target.id}, event.target.value).then((response) => {
        BooksAPI.getAll().then((books) => {
-        this.setState({ListBooks: books})
+        this.setState({listBooks: books})
       });
     });
   }
 
   render() {
-    const { ListBooks } = this.state;
+    const { listBooks } = this.state;
     return (
       <div className="app">
         <Route exact path='/' render={()=>(
@@ -37,15 +38,15 @@ class MyReadsApp extends React.Component {
               <div>
                 <Bookshelf 
                   title='Currently Reading' 
-                  books={ListBooks.filter((book) => book.shelf === 'currentlyReading')} 
+                  books={listBooks.filter((book) => book.shelf === 'currentlyReading')} 
                   onChangeShelf={this.changeShelf} />
                 <Bookshelf 
                   title='Want to Read' 
-                  books={ListBooks.filter((book) => book.shelf === 'wantToRead')} 
+                  books={listBooks.filter((book) => book.shelf === 'wantToRead')} 
                   onChangeShelf={this.changeShelf} />
                 <Bookshelf 
                   title='Read' 
-                  books={ListBooks.filter((book) => book.shelf === 'read')} 
+                  books={listBooks.filter((book) => book.shelf === 'read')} 
                   onChangeShelf={this.changeShelf} />
               </div>
             </div>
@@ -56,7 +57,9 @@ class MyReadsApp extends React.Component {
         )}
         />
         <Route path='/search' render={({history})=>(
-          <Search onShelfSelect={(event)=>{
+          <Search 
+            currentBooks={listBooks} 
+            onShelfSelect={(event)=>{
             this.changeShelf(event)
             history.push('/')
           }}/>
